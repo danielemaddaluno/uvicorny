@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  fastapi:
+    build:
+        dockerfile: Dockerfile
+    ports:
+      - "8005:80"
+    volumes:
+      - ./app:/code/app
