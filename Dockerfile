@@ -1,12 +1,15 @@
-FROM python:3.8-slim
+# Use the official Python image as the base image
+FROM python:3.12-slim
 
-WORKDIR /app/
-ADD requirements.txt /app/
+# Set the working directory inside the container
+WORKDIR /web
 
-RUN pip install -r requirements.txt
+# Copy the current directory contents into the container at /web
+COPY . /web/
 
-ADD . /app/
+# Install the required packages
+RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 8005
 
-CMD ["uvicorn", "app.main:app", "--host=0.0.0.0", "--port=80"]
+# Command to run the application
+CMD ["uvicorn", "app.app:app", "--host", "0.0.0.0", "--port", "8000"]

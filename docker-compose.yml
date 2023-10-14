@@ -1,9 +1,10 @@
-version: '3.7'
+version: '3.8'
 services:
-  fastapi:
+  web:
+    # Build the Docker image using the provided Dockerfile
     build:
-        dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile
+    # Expose port 5000 inside the container
     ports:
-      - "8005:80"
-    volumes:
-      - ./app:/code/app
+      - "80:8000"
